@@ -1,0 +1,30 @@
+{
+  "name": "testchallenge",
+  "description": "test challenge for QA automation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nerdko/testChallenge.git"
+  },
+  "keywords": [
+    "Challenge",
+    "Nicolas",
+    "Cypress"
+  ],
+  "author": "Nyussim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Nerdko/testChallenge/issues"
+  },
+  "homepage": "https://github.com/Nerdko/testChallenge#readme",
+  "devDependencies": {
+    "cypress": "^13.6.0"
+  },
+  "dependencies": {
+    "mochawesome": "^7.1.3"
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-12-01T07:16:42.623Z",
+    "end": "2023-12-01T07:16:49.334Z",
+    "duration": 6711,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5d7de315-05d1-41da-ad05-0dc109ed5183",
+      "title": "",
+      "fullFile": "cypress\\e2e\\user_cycle.cy.js",
+      "file": "cypress\\e2e\\user_cycle.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d648f029-ceb4-4ba5-bf89-023472db75ca",
+          "title": "Test user cycle",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should create a user",
+              "fullTitle": "Test user cycle Should create a user",
+              "timedOut": null,
+              "duration": 2670,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//Setin up a listener for the sig up post to occur\ncy.intercept(\"POST\", \"/signup\").as(\"signup\");\ncy.contains(loginButtom).should(\"exist\");\ncy.get(\"#signin2\").should(\"be.visible\").click();\ncy.get(\"#signInModal\").as(\"popup\").should(\"be.visible\").should(\"be.focused\");\ncy.contains(\"Username\").should(\"be.visible\");\ncy.get(\"#sign-username\").focus().should(\"have.text\", \"\").type(user.name);\ncy.get(\"#sign-password\").focus().should(\"have.text\", \"\").type(user.password).blur();\ncy.get(\"@popup\").find(\"[type=button]\").contains(signupButton).should(\"be.visible\").click();\ncy.on(\"window:alert\", text => {\n  //if this assertion fail, please change the user name in the cypress.env.json file\n  if (text.startsWith(\"This user already exist\")) {\n    console.log(`Is expected that alert shows '${text}' when user already exist, will be corrected when we have access to delete command`);\n  } else {\n    expect(text).to.contains(\"Sign up successful.\");\n  }\n});\ncy.wait(\"@signup\");",
+              "err": {},
+              "uuid": "211acf55-13b8-4dbb-93b2-d8bfd10f7837",
+              "parentUUID": "d648f029-ceb4-4ba5-bf89-023472db75ca",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should log in with created user",
+              "fullTitle": "Test user cycle Should log in with created user",
+              "timedOut": null,
+              "duration": 2046,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//Setting up a listener for the login post to occur\ncy.intercept(\"POST\", \"/login\").as(\"login\");\ncy.get(\"#login2\").should(\"be.visible\").click();\ncy.get(\"#logInModal\").should(\"be.visible\").should(\"be.focused\");\ncy.get(\"#loginusername\").focus().should(\"be.visible\").type(user.name);\ncy.get(\"#loginpassword\").focus().should(\"be.visible\").type(user.password).blur();\ncy.get(\"#logInModal\").find(\"[type=button]\").contains(loginButtom).should(\"be.visible\").click();\ncy.wait(\"@login\");\ncy.contains(user.name).should(\"be.visible\");",
+              "err": {},
+              "uuid": "fbe167dd-347c-4bb1-9db9-de926cc8939f",
+              "parentUUID": "d648f029-ceb4-4ba5-bf89-023472db75ca",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should log out",
+              "fullTitle": "Test user cycle Should log out",
+              "timedOut": null,
+              "duration": 1906,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login(user).then(() => {\n  cy.contains(user.name).should(\"be.visible\");\n  cy.get(\"#logout2\").should(\"exist\").click();\n  cy.contains(user.name).should(\"not.exist\");\n});",
+              "err": {},
+              "uuid": "1691f94d-4d2f-48da-a1cc-e2909ee2e499",
+              "parentUUID": "d648f029-ceb4-4ba5-bf89-023472db75ca",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "211acf55-13b8-4dbb-93b2-d8bfd10f7837",
+            "fbe167dd-347c-4bb1-9db9-de926cc8939f",
+            "1691f94d-4d2f-48da-a1cc-e2909ee2e499"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6622,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "callenge-report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportFilename": "callenge-report"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
