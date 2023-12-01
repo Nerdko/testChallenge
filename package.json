@@ -1,5 +1,5 @@
 {
-  "name": "testchallenge",
+  "name": "@nerdko/testchallenge",
   "description": "test challenge for QA automation",
   "version": "1.0.0",
   "main": "index.js",
